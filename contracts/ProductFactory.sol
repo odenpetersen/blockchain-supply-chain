@@ -5,14 +5,6 @@ pragma solidity ^0.8.0;
 /// @title 
 /// @author 
 
-/*
-amount
-Name
-Product Instance inherits Product
-Price
-Origin (where stocks at)
-Expiry date 
-*/
 contract ProductFactory {
 	string name;
 

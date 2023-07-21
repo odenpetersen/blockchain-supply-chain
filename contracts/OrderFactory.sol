@@ -32,35 +32,6 @@ contract OrderFactory {
 	constructor() {
 	}
 
-	/**
-	* @notice 
-	* @dev 
-	*
-	* @param name Description
-	* @return Description
-	*/
-	function getStatus(string memory name) public restricted returns ( uint ){
-	}
-
-	/**
-	* @notice 
-	* @dev 
-	*
-	* @param name Description
-	* @return Description
-	*/
-	function lastUpdatedAt(string memory name) public restricted returns ( uint ){
-	}
-
-	/**
-	* @notice 
-	* @dev 
-	*
-	* @param name Description
-	* @return Description
-	*/
-	function getDeliveryPoints(string memory name) public restricted returns ( uint ){
-	}
 
 	/**
 	* @notice Only the manager can do
