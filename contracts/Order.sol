@@ -20,6 +20,8 @@ contract Order {
 	mapping(int => address) parties;
 	mapping(int => int) delivery_due_times;
 	mapping(int => int) delivery_times;
+	mapping(address => string[]) comments;
+	mapping(address => int[]) comment_timestamps;
 	Oracle oracle;
 
 	/**
