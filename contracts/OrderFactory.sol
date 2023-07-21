@@ -2,8 +2,23 @@
 
 pragma solidity ^0.8.0;
 
-/// @title Contract to agree on the lunch venue
-/// @author Dilum Bandara , CSIRO ’s Data61
+/// @title 
+/// @author 
+
+/*
+Buyer address
+Product instance address
+Product details 
+Delivery details 
+* Delivery status/shipAt: string (which city the shipment is at eg. Sydney, Australia) 
+* lastUpdatedAt: int (epoch)
+* Delivery points: string[] (cities the shipment passed through)
+* Addresses: address[] (which respective to destination points)
+
+Example: 
+A (supplier), B, C, D, E
+UK -> India -> Singapore -> Indonesia -> Aus
+*/
 
 contract OrderFactory {
 	address purchaser;
