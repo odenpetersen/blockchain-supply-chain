@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-supply-chain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odenpetersen/blockchain-supply-chain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odenpetersen/blockchain-supply-chain/issues"
+  },
+  "dependencies": {
+    "truffle": "5.11.0",
+    "ganache-cli": "6.12.2"
+  },
+  "homepage": "https://github.com/odenpetersen/blockchain-supply-chain#readme"
+}
