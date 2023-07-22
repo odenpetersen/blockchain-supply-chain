@@ -1,7 +1,8 @@
 module.exports = {
   contracts_directory: "contracts",
   networks: {
-    development: {
+    develop: {
+      total_accounts: 20,
       host: "127.0.0.1",     // Localhost
       port: 8545,            // Ganache/Ganache-cli default port
       network_id: "*"        // Any network ID

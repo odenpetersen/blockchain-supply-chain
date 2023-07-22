@@ -16,8 +16,7 @@
     "url": "https://github.com/odenpetersen/blockchain-supply-chain/issues"
   },
   "dependencies": {
-    "truffle": "5.11.0",
-    "ganache-cli": "6.12.2"
+    "truffle": "5.11.0"
   },
   "homepage": "https://github.com/odenpetersen/blockchain-supply-chain#readme"
 }
