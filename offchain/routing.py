@@ -15,7 +15,6 @@ shipping_time_days = [
     ("newyork", "london", 10),
     ("newyork", "johannesburg", 15),
     ("newyork", "houston", 8),
-    ("newyork", "dubai", 10),
     
     ("seattle", "london", 18),
     ("seattle", "johannesburg", 18),

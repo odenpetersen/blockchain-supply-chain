@@ -10,7 +10,7 @@ class Bank:
 
     def add_oracle(self):
         #Launch an oracle contract instance
-        pass
+        raise Exception("unimplemented.")
         self.oracles.append(address)
 
     def create_account(self,username,password):

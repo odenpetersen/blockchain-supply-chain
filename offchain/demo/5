@@ -1,0 +1,7 @@
+#5. Intermediate and final receipt records
+receipt_intermediate order 
+receipt_final order
+break
+
+#Please manually examine order details using the order_details command.
+order_details

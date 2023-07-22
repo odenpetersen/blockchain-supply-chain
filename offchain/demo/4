@@ -1,0 +1,13 @@
+#4. Payment processing
+#Open accounts:
+open_bank_account newyorkconstruction password123
+open_bank_account chinasteel racecar44
+#Deposit money:
+deposit newyorkconstruction 2000
+break
+#Transfer money:
+transfer newyorkconstruction chinasteel
+break
+#Get order payment status from oracle:
+#Please manually check this. You can use the order_details command.
+order_details
