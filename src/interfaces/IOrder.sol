@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 interface IOrder {
     enum OrderStatus {
         CREATED, // created by the buyer
-        VERIFIED, // verified by both seller (in stocks) and shiper (right destinations)
+        VERIFIED, // verified by both seller (in stocks) and shipper (right destinations)
         PAID, // order has been paid
         DELIVERED, // order has been delivered
         RECEIVED, // order has been received by the buyer
@@ -33,7 +33,7 @@ interface IOrder {
     // Verify the order
     function verifyOrderBySeller(bool) external;
 
-    function verifyOrderByShiper(bool) external;
+    function verifyOrderByShipper(bool) external;
 
     // check if the order has been paid
     function isPaid() external returns (bool);
@@ -50,8 +50,8 @@ interface IOrder {
     // get isVerifiedBySeller
     function getIsVerifiedBySeller() external returns (bool);
 
-    // get isVerifiedByShiper
-    function getIsVerifiedByShiper() external returns (bool);
+    // get isVerifiedByShipper
+    function getIsVerifiedByShipper() external returns (bool);
 
     // get the current delivery point
     function getCurrentDeliveryPoint() external returns (string memory);

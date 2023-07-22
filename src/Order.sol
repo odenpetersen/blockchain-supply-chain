@@ -12,9 +12,9 @@ contract Order is IOrder {
     address product; // address of the product that is being purchased
     address owner; // buyer of the order
     address seller; // seller of the product
-    address shiper; // shiper of the order
+    address shipper; // shipper of the order
     bool isVerifiedBySeller; // whether the seller has verified the order
-    bool isVerifiedByShiper; // whether the shiper has verified the order
+    bool isVerifiedByShipper; // whether the shipper has verified the order
 
     uint currentDeliveryPoint; // current delivery point (index)
     uint lastUpdatedAt; // last updated time
@@ -31,7 +31,7 @@ contract Order is IOrder {
     constructor(
         address _product,
         address _seller,
-        address _shiper,
+        address _shipper,
         string[] memory _destinations,
         address[] memory _intermediaries,
         uint[] memory _deliveryDueTimes
@@ -39,7 +39,7 @@ contract Order is IOrder {
         product = _product;
         owner = msg.sender;
         seller = _seller;
-        shiper = _shiper;
+        shipper = _shipper;
 
         if (_destinations.length != _intermediaries.length) {
             revert DestinationsLengthAndIntermediariesLengthNotEqual();
@@ -59,21 +59,29 @@ contract Order is IOrder {
     function verifyOrderBySeller(
         bool inStock
     ) external onlySeller onlyOrderCreatedState {
-        if (inStock == false) orderStatus = OrderStatus.CANCELLED;
+        if (inStock == false) {
+            orderStatus = OrderStatus.CANCELLED;
+            return;
+        }
+
         isVerifiedBySeller = true;
 
-        if (isVerifiedByShiper) {
+        if (isVerifiedByShipper == true) {
             orderStatus = OrderStatus.VERIFIED;
         }
     }
 
     function verifyOrderByShipper(
         bool rightDestinations
-    ) external onlyShiper onlyOrderCreatedState {
-        if (rightDestinations == false) orderStatus = OrderStatus.CANCELLED;
-        isVerifiedByShiper = true;
+    ) external onlyShipper onlyOrderCreatedState {
+        if (rightDestinations == false) {
+            orderStatus = OrderStatus.CANCELLED;
+            return;
+        }
 
-        if (isVerifiedBySeller) {
+        isVerifiedByShipper = true;
+
+        if (isVerifiedBySeller == true) {
             orderStatus = OrderStatus.VERIFIED;
         }
     }
@@ -117,7 +125,7 @@ contract Order is IOrder {
     /// Emergency to cancel the orders
     function cancelOrder() external {
         if (
-            msg.sender == owner || msg.sender == seller || msg.sender == shiper
+            msg.sender == owner || msg.sender == seller || msg.sender == shipper
         ) {
             orderStatus = OrderStatus.CANCELLED;
         } else {
@@ -134,8 +142,8 @@ contract Order is IOrder {
         return isVerifiedBySeller;
     }
 
-    function getIsVerifiedByShiper() external view returns (bool) {
-        return isVerifiedByShiper;
+    function getIsVerifiedByShipper() external view returns (bool) {
+        return isVerifiedByShipper;
     }
 
     // Get the current delivery point
@@ -187,8 +195,8 @@ contract Order is IOrder {
         _;
     }
 
-    modifier onlyShiper() {
-        if (msg.sender != shiper) {
+    modifier onlyShipper() {
+        if (msg.sender != shipper) {
             revert UnauthorizedAccess();
         }
         _;
@@ -222,6 +230,4 @@ contract Order is IOrder {
         }
         _;
     }
-
-    function verifyOrderByShiper(bool) external override {}
 }
