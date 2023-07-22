@@ -39,6 +39,9 @@ def run_command(command):
             if input() == 'i':
                 comment("To resume execution, enter 'continue'.")
                 console()
+        elif command == 'i':
+            comment("To resume execution, enter 'continue'.")
+            console()
         else:
             command,*arguments = command.split(' ')
             commands[command](*arguments)

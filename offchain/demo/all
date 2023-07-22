@@ -1,6 +1,12 @@
 run demo/0
+break
 run demo/1
+break
 run demo/2
+break
 run demo/3
+break
 run demo/4
+break
 run demo/5
+break

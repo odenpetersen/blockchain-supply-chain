@@ -10,4 +10,4 @@ transfer newyorkconstruction chinasteel
 break
 #Get order payment status from oracle:
 #Please manually check this. You can use the order_details command.
-order_details
+i
