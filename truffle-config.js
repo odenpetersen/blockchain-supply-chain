@@ -1,5 +1,5 @@
 module.exports = {
-  contracts_directory: "contracts",
+  contracts_directory: "src",
   networks: {
     develop: {
       total_accounts: 20,

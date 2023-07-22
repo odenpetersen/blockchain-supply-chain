@@ -10,7 +10,7 @@ class Bank:
 
     def add_oracle(self):
         #Launch an oracle contract instance
-        ...{
+        pass
         self.oracles.append(address)
 
     def create_account(self,username,password):
@@ -31,6 +31,6 @@ class Bank:
                 if oracle not in self.oracles:
                     raise Exception("Unknown oracle.")
                 #Publish oracle confirmation
-                ...{
+                pass
             self.balances[username] -= amount
             self.balances[recipient] += amount
