@@ -2,16 +2,17 @@
 
 pragma solidity ^0.8.0;
 
+import './Product.sol';
+
 /// @title 
 /// @author 
 
 contract ProductFactory {
-	string name;
-
+	Product[] products;
 	/**
 	* @dev Construct
 	*/
-	constructor(string memory name) {
+	constructor() {
 		manager = msg.sender;
 	}
 
@@ -22,7 +23,6 @@ contract ProductFactory {
 	* @param name Description
 	* @return Description
 	*/
-	function instantiate(string memory name) public restricted returns ( uint ){
+	function instantiate(string memory name) public returns ( Product ){
 	}
 }
-

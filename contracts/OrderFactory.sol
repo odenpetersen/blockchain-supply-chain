@@ -23,13 +23,15 @@ UK -> India -> Singapore -> Indonesia -> Aus
 contract OrderFactory {
 	address purchaser;
 	address productInstance;
-	address intermediaries[];
-	string destinations[];
+	address[] intermediaries;
+	string[] destinations;
+	address manager;
 
 	/**
 	* @dev Construct
 	*/
 	constructor() {
+		manager = msg.sender;
 	}
 
 

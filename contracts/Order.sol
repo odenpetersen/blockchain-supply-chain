@@ -5,6 +5,8 @@ pragma solidity ^0.8.0;
 /// @title 
 /// @author 
 
+import './Oracle.sol';
+
 /*
 Verify order
 Record deliveries or cancellations
@@ -13,7 +15,7 @@ Get delivery status
 Update delivery status (where it is at, when)
 */
 contract Order {
-	int delivery_point_ids[];
+	int[] delivery_point_ids;
 	int current_delivery_point;
 	int last_updated_time;
 	mapping(int => string) delivery_point_names;
@@ -22,12 +24,14 @@ contract Order {
 	mapping(int => int) delivery_times;
 	mapping(address => string[]) comments;
 	mapping(address => int[]) comment_timestamps;
+	address manager;
 	Oracle oracle;
 
 	/**
 	* @dev Construct
 	*/
 	constructor() {
+		manager = msg.sender;
 	}
 
 	function isPaidFor() public returns ( bool ) {
@@ -38,8 +42,8 @@ contract Order {
 	* @notice 
 	* @dev 
 	*
-	* @param name Description
-	* @return Description
+	* @param 
+	* @return 
 	*/
 	function isDelivered() public returns ( bool ){
 	}
@@ -84,5 +88,10 @@ contract Order {
 	}
 
 	//TODO: Getter Functions for all attributes
+
+	modifier restricted() {
+		require ( msg.sender == manager , "Can only be executed by the manager");
+		_;
+	}
 }
 

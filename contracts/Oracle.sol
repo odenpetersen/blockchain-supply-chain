@@ -7,7 +7,7 @@ pragma solidity ^0.8.0;
 
 contract Oracle {
 	address manager;
-	address contracts_paid[];
+	address[] contracts_paid;
 
 	constructor() {
 	}
