@@ -1,0 +1,1369 @@
+{
+  "contractName": "IOrder",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "DestinationsLengthAndDeliveryDueTimesLengthNotEqual",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DestinationsLengthAndIntermediariesLengthNotEqual",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "IncorrectOrderStatusState",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OrderAlreadyDelivered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OrderNotCreatedState",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OrderNotDelivered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OrderNotPaidState",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OrderNotVerifiedState",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "UnauthorizedAccess",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "place",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "UpdatedShipment",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "name": "verifyOrderBySeller",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "name": "verifyOrderByShipper",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isPaid",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateShipment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "verifyReceipt",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOrderStatus",
+      "outputs": [
+        {
+          "internalType": "enum IOrder.OrderStatus",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getIsVerifiedBySeller",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getIsVerifiedByShipper",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCurrentDeliveryPoint",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastUpdatedAt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDeliveryPoints",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getIntermediaries",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDeliveryDueTimes",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDeliveryTimes",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"DestinationsLengthAndDeliveryDueTimesLengthNotEqual\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"DestinationsLengthAndIntermediariesLengthNotEqual\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"IncorrectOrderStatusState\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OrderAlreadyDelivered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OrderNotCreatedState\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OrderNotDelivered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OrderNotPaidState\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OrderNotVerifiedState\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnauthorizedAccess\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"place\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"UpdatedShipment\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getCurrentDeliveryPoint\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDeliveryDueTimes\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDeliveryPoints\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDeliveryTimes\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIntermediaries\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIsVerifiedBySeller\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIsVerifiedByShipper\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastUpdatedAt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOrderStatus\",\"outputs\":[{\"internalType\":\"enum IOrder.OrderStatus\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isPaid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"updateShipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"name\":\"verifyOrderBySeller\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"name\":\"verifyOrderByShipper\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"verifyReceipt\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IOrder.sol\":\"IOrder\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IOrder.sol\":{\"keccak256\":\"0x1a42573a34ee209cdf35674e569304cd8a901db2bc78dbb326d34aa6d19e8062\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://33d77cbe874c4e49d302cc8d2b10acb6227e2f59d150011454964eec0b83c71e\",\"dweb:/ipfs/QmS9tz1EhQXU8Kyw1bvY95egDVFWdM4RTJdF6j2JzqxwXk\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\n\npragma solidity ^0.8.0;\n\n// interface of the Order contract\ninterface IOrder {\n    enum OrderStatus {\n        CREATED, // created by the buyer\n        VERIFIED, // verified by both seller (in stocks) and shipper (right destinations)\n        PAID, // order has been paid\n        DELIVERED, // order has been delivered\n        RECEIVED, // order has been received by the buyer\n        CANCELLED // order has been cancelled\n    }\n\n    // Errors\n    error OrderNotCreatedState();\n    error OrderNotVerifiedState();\n    error OrderNotPaidState();\n    error OrderNotDelivered();\n    error OrderAlreadyDelivered();\n    error IncorrectOrderStatusState();\n\n    error DestinationsLengthAndIntermediariesLengthNotEqual();\n    error DestinationsLengthAndDeliveryDueTimesLengthNotEqual();\n    error UnauthorizedAccess();\n\n    // Events\n    event UpdatedShipment(string place, uint timestamp);\n\n    // Functions\n\n    // Verify the order\n    function verifyOrderBySeller(bool) external;\n\n    function verifyOrderByShipper(bool) external;\n\n    // check if the order has been paid\n    function isPaid() external returns (bool);\n\n    // update shipment\n    function updateShipment(uint) external;\n\n    // The party receiving the product at a location should call this function before taking physical control of goods.\n    function verifyReceipt() external;\n\n    // status is the where the order is at and when\n    function getOrderStatus() external returns (OrderStatus);\n\n    // get isVerifiedBySeller\n    function getIsVerifiedBySeller() external returns (bool);\n\n    // get isVerifiedByShipper\n    function getIsVerifiedByShipper() external returns (bool);\n\n    // get the current delivery point\n    function getCurrentDeliveryPoint() external returns (string memory);\n\n    // get the last updated time\n    function getLastUpdatedAt() external returns (uint);\n\n    // get the delivery points\n    function getDeliveryPoints() external returns (string[] memory);\n\n    // get the intermediaries involved\n    function getIntermediaries() external returns (address[] memory);\n\n    // get the delivery due times\n    function getDeliveryDueTimes() external returns (uint[] memory);\n\n    // get the delivery times\n    function getDeliveryTimes() external returns (uint[] memory);\n}\n",
+  "sourcePath": "/Users/odenpetersen/Documents/Programming/blockchain-supply-chain/contracts/interfaces/IOrder.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IOrder.sol",
+    "exportedSymbols": {
+      "IOrder": [
+        813
+      ]
+    },
+    "id": 814,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 708,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "40:23:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IOrder",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 813,
+        "linearizedBaseContracts": [
+          813
+        ],
+        "name": "IOrder",
+        "nameLocation": "110:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IOrder.OrderStatus",
+            "id": 715,
+            "members": [
+              {
+                "id": 709,
+                "name": "CREATED",
+                "nameLocation": "150:7:3",
+                "nodeType": "EnumValue",
+                "src": "150:7:3"
+              },
+              {
+                "id": 710,
+                "name": "VERIFIED",
+                "nameLocation": "191:8:3",
+                "nodeType": "EnumValue",
+                "src": "191:8:3"
+              },
+              {
+                "id": 711,
+                "name": "PAID",
+                "nameLocation": "281:4:3",
+                "nodeType": "EnumValue",
+                "src": "281:4:3"
+              },
+              {
+                "id": 712,
+                "name": "DELIVERED",
+                "nameLocation": "318:9:3",
+                "nodeType": "EnumValue",
+                "src": "318:9:3"
+              },
+              {
+                "id": 713,
+                "name": "RECEIVED",
+                "nameLocation": "365:8:3",
+                "nodeType": "EnumValue",
+                "src": "365:8:3"
+              },
+              {
+                "id": 714,
+                "name": "CANCELLED",
+                "nameLocation": "423:9:3",
+                "nodeType": "EnumValue",
+                "src": "423:9:3"
+              }
+            ],
+            "name": "OrderStatus",
+            "nameLocation": "128:11:3",
+            "nodeType": "EnumDefinition",
+            "src": "123:343:3"
+          },
+          {
+            "errorSelector": "82811e63",
+            "id": 717,
+            "name": "OrderNotCreatedState",
+            "nameLocation": "492:20:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 716,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "512:2:3"
+            },
+            "src": "486:29:3"
+          },
+          {
+            "errorSelector": "2a636249",
+            "id": 719,
+            "name": "OrderNotVerifiedState",
+            "nameLocation": "526:21:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 718,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "547:2:3"
+            },
+            "src": "520:30:3"
+          },
+          {
+            "errorSelector": "8d39494e",
+            "id": 721,
+            "name": "OrderNotPaidState",
+            "nameLocation": "561:17:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 720,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "578:2:3"
+            },
+            "src": "555:26:3"
+          },
+          {
+            "errorSelector": "0a59dbe7",
+            "id": 723,
+            "name": "OrderNotDelivered",
+            "nameLocation": "592:17:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "609:2:3"
+            },
+            "src": "586:26:3"
+          },
+          {
+            "errorSelector": "458d20d0",
+            "id": 725,
+            "name": "OrderAlreadyDelivered",
+            "nameLocation": "623:21:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 724,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "644:2:3"
+            },
+            "src": "617:30:3"
+          },
+          {
+            "errorSelector": "461e3ec3",
+            "id": 727,
+            "name": "IncorrectOrderStatusState",
+            "nameLocation": "658:25:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 726,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "683:2:3"
+            },
+            "src": "652:34:3"
+          },
+          {
+            "errorSelector": "5520e8cb",
+            "id": 729,
+            "name": "DestinationsLengthAndIntermediariesLengthNotEqual",
+            "nameLocation": "698:49:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 728,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "747:2:3"
+            },
+            "src": "692:58:3"
+          },
+          {
+            "errorSelector": "6e2f14b7",
+            "id": 731,
+            "name": "DestinationsLengthAndDeliveryDueTimesLengthNotEqual",
+            "nameLocation": "761:51:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 730,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "812:2:3"
+            },
+            "src": "755:60:3"
+          },
+          {
+            "errorSelector": "344fd586",
+            "id": 733,
+            "name": "UnauthorizedAccess",
+            "nameLocation": "826:18:3",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 732,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "844:2:3"
+            },
+            "src": "820:27:3"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "048aefd5f91da1e18dbeb1ce85de0665b323efd3b284e468c0dafdd2709e676e",
+            "id": 739,
+            "name": "UpdatedShipment",
+            "nameLocation": "873:15:3",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 738,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 735,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "place",
+                  "nameLocation": "896:5:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 739,
+                  "src": "889:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 734,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "889:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 737,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "timestamp",
+                  "nameLocation": "908:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 739,
+                  "src": "903:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 736,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "903:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "888:30:3"
+            },
+            "src": "867:52:3"
+          },
+          {
+            "functionSelector": "8954b3bf",
+            "id": 744,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyOrderBySeller",
+            "nameLocation": "976:19:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 742,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 741,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 744,
+                  "src": "996:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 740,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "996:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "995:6:3"
+            },
+            "returnParameters": {
+              "id": 743,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1010:0:3"
+            },
+            "scope": 813,
+            "src": "967:44:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "f912ab82",
+            "id": 749,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyOrderByShipper",
+            "nameLocation": "1026:20:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 747,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 746,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 749,
+                  "src": "1047:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 745,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1047:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1046:6:3"
+            },
+            "returnParameters": {
+              "id": 748,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1061:0:3"
+            },
+            "scope": 813,
+            "src": "1017:45:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "209ebc08",
+            "id": 754,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isPaid",
+            "nameLocation": "1117:6:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 750,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1123:2:3"
+            },
+            "returnParameters": {
+              "id": 753,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 752,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 754,
+                  "src": "1144:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 751,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1144:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1143:6:3"
+            },
+            "scope": 813,
+            "src": "1108:42:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "41df9bb7",
+            "id": 759,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateShipment",
+            "nameLocation": "1188:14:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 756,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 759,
+                  "src": "1203:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 755,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1203:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1202:6:3"
+            },
+            "returnParameters": {
+              "id": 758,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1217:0:3"
+            },
+            "scope": 813,
+            "src": "1179:39:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "754fdd9a",
+            "id": 762,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyReceipt",
+            "nameLocation": "1353:13:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 760,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1366:2:3"
+            },
+            "returnParameters": {
+              "id": 761,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1377:0:3"
+            },
+            "scope": 813,
+            "src": "1344:34:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "d81d26ae",
+            "id": 768,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOrderStatus",
+            "nameLocation": "1445:14:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 763,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1459:2:3"
+            },
+            "returnParameters": {
+              "id": 767,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 766,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 768,
+                  "src": "1480:11:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_OrderStatus_$715",
+                    "typeString": "enum IOrder.OrderStatus"
+                  },
+                  "typeName": {
+                    "id": 765,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 764,
+                      "name": "OrderStatus",
+                      "nameLocations": [
+                        "1480:11:3"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 715,
+                      "src": "1480:11:3"
+                    },
+                    "referencedDeclaration": 715,
+                    "src": "1480:11:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_OrderStatus_$715",
+                      "typeString": "enum IOrder.OrderStatus"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1479:13:3"
+            },
+            "scope": 813,
+            "src": "1436:57:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "110f2b7c",
+            "id": 773,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIsVerifiedBySeller",
+            "nameLocation": "1538:21:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 769,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1559:2:3"
+            },
+            "returnParameters": {
+              "id": 772,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 771,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 773,
+                  "src": "1580:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 770,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1580:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1579:6:3"
+            },
+            "scope": 813,
+            "src": "1529:57:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "74a356c7",
+            "id": 778,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIsVerifiedByShipper",
+            "nameLocation": "1632:22:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 774,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1654:2:3"
+            },
+            "returnParameters": {
+              "id": 777,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 776,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 778,
+                  "src": "1675:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 775,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1675:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1674:6:3"
+            },
+            "scope": 813,
+            "src": "1623:58:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "bdcf8c77",
+            "id": 783,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCurrentDeliveryPoint",
+            "nameLocation": "1734:23:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 779,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1757:2:3"
+            },
+            "returnParameters": {
+              "id": 782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 781,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 783,
+                  "src": "1778:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 780,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1778:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1777:15:3"
+            },
+            "scope": 813,
+            "src": "1725:68:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "24abb247",
+            "id": 788,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLastUpdatedAt",
+            "nameLocation": "1841:16:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 784,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1857:2:3"
+            },
+            "returnParameters": {
+              "id": 787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 786,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 788,
+                  "src": "1878:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 785,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1878:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1877:6:3"
+            },
+            "scope": 813,
+            "src": "1832:52:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "09e3b2a4",
+            "id": 794,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeliveryPoints",
+            "nameLocation": "1930:17:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 789,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1947:2:3"
+            },
+            "returnParameters": {
+              "id": 793,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 792,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 794,
+                  "src": "1968:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "string[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 790,
+                      "name": "string",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1968:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage_ptr",
+                        "typeString": "string"
+                      }
+                    },
+                    "id": 791,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1968:8:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                      "typeString": "string[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1967:17:3"
+            },
+            "scope": 813,
+            "src": "1921:64:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "9a895420",
+            "id": 800,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIntermediaries",
+            "nameLocation": "2039:17:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 795,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2056:2:3"
+            },
+            "returnParameters": {
+              "id": 799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 798,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 800,
+                  "src": "2077:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 796,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2077:7:3",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 797,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2077:9:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2076:18:3"
+            },
+            "scope": 813,
+            "src": "2030:65:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "b1bc27b0",
+            "id": 806,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeliveryDueTimes",
+            "nameLocation": "2144:19:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 801,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2163:2:3"
+            },
+            "returnParameters": {
+              "id": 805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 804,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 806,
+                  "src": "2184:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 802,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2184:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 803,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2184:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2183:15:3"
+            },
+            "scope": 813,
+            "src": "2135:64:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "9b923053",
+            "id": 812,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeliveryTimes",
+            "nameLocation": "2244:16:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 807,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2260:2:3"
+            },
+            "returnParameters": {
+              "id": 811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 810,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 812,
+                  "src": "2281:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 808,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2281:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 809,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2281:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2280:15:3"
+            },
+            "scope": 813,
+            "src": "2235:61:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 814,
+        "src": "100:2198:3",
+        "usedErrors": [
+          717,
+          719,
+          721,
+          723,
+          725,
+          727,
+          729,
+          731,
+          733
+        ],
+        "usedEvents": [
+          739
+        ]
+      }
+    ],
+    "src": "40:2259:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.14",
+  "updatedAt": "2023-07-22T14:53:06.790Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

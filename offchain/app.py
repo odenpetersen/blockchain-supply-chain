@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import routing
+from web3 import Web3, HTTPProvider
 from termcolor import colored
-from oracle import Bank
 comment = lambda x : print(colored(x,'yellow'))
 result = lambda x : print(colored(x,'green'))
 error = lambda x : print(colored(x,'red'))
+
+from oracle import Bank
 
 #0. Set up accounts
 #alias 
@@ -109,11 +111,31 @@ def order(product_address, buyer, seller, product, origin, destination):
     buyer, seller, product = aliases[buyer], aliases[seller], aliases[product]
     result(f"{buyer}\n{seller}\n{product}")
     comment(f"Deploying new instance of Order contract on chain.")
-    address = None
+    address = deploy('Order', buyer, )
     result(f"Deployed at {address}.")
 
 def deploy(contract_name, sender_account, *constructor_arguments):
-    pass
+    network_address = 'http://127.0.0.1:8545/'
+    web3 = Web3(HTTPProvider(network_address))
+
+    if sender_account in aliases:
+        sender_account_name = sender_account
+        sender_account = aliases[sender_account]
+    else:
+        sender_account_name = sender_account['address']
+
+    comment(f"Deploying {contract_name} to {network_address} from {sender_account}")
+    
+    #Get compiled contract code
+    contract_json = f'../build/contracts/{contract_name}.json'
+    with open(contract_json) as f:
+        content = json.load(f)
+    contract_obj = web3.eth.contract(abi=content['abi'], bytecode=content['bytecode'])
+
+    contract_obj.constructor(*constructor_arguments).build_transaction(account_from = sender_account)
+
+    return address
+    
 
 bank = Bank("Global Bank")
 @com
