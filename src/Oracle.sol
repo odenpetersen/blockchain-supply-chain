@@ -2,23 +2,33 @@
 
 pragma solidity ^0.8.0;
 
-/// @title 
-/// @author 
+/// @title
+/// @author
 
 contract Oracle {
-	address manager;
-	address[] contracts_paid;
+    address manager;
+    mapping(address => bool) contractsPaid;
 
-	constructor() {
-	}
+    constructor() {
+        manager = msg.sender;
+    }
 
-	
-	/**
-	* @notice Only the manager can do
-	*/
-	modifier restricted() {
-		require ( msg.sender == manager , "Can only be executed by the manager");
-		_;
-	}
+    function hasPaid(address contractAddress) external onlyManager {
+        contractsPaid[contractAddress] = true;
+    }
+
+    function isPaid(address contractAddress) external view returns (bool) {
+        return contractsPaid[contractAddress];
+    }
+
+    /**
+     * @notice Only the manager can do
+     */
+    modifier onlyManager() {
+        require(
+            msg.sender == manager,
+            "Can only be executed by the oracle manager"
+        );
+        _;
+    }
 }
-
