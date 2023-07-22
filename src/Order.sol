@@ -130,6 +130,14 @@ contract Order is IOrder {
         return orderStatus;
     }
 
+    function getIsVerifiedBySeller() external view returns (bool) {
+        return isVerifiedBySeller;
+    }
+
+    function getIsVerifiedByShiper() external view returns (bool) {
+        return isVerifiedByShiper;
+    }
+
     // Get the current delivery point
     function getCurrentDeliveryPoint() external view returns (string memory) {
         return destinations[currentDeliveryPoint];

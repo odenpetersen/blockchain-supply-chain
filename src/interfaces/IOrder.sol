@@ -47,6 +47,12 @@ interface IOrder {
     // status is the where the order is at and when
     function getOrderStatus() external returns (OrderStatus);
 
+    // get isVerifiedBySeller
+    function getIsVerifiedBySeller() external returns (bool);
+
+    // get isVerifiedByShiper
+    function getIsVerifiedByShiper() external returns (bool);
+
     // get the current delivery point
     function getCurrentDeliveryPoint() external returns (string memory);
 
