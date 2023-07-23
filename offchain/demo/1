@@ -3,3 +3,5 @@ product chinasteel hbeamsteel200 TS123456 50.00 40 steel_h_beam_200_mm_depth
 break
 #Please manually interject and add an alias for the hbeamsteel200 contract address.
 i
+
+product_details hbeamsteel200

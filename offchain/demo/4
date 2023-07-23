@@ -5,9 +5,11 @@ open_bank_account chinasteel racecar44
 #Deposit money:
 deposit newyorkconstruction 2000
 break
-#Transfer money:
-transfer newyorkconstruction chinasteel
+#Please manually transfer funds using the command "transfer [from] [from_password] [to] [amount] [oracle_address] [order_address]"
+i
 break
+#Please manually update the order payment status using "verify_paid [order_address] []"
 #Get order payment status from oracle:
+verify_paid
 #Please manually check this. You can use the order_details command.
 i

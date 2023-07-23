@@ -34,7 +34,7 @@ contract Order is IOrder {
         address _shipper,
         string[] memory _destinations,
         address[] memory _intermediaries,
-        uint[] memory _deliveryDueTimes
+        uint[] memory _deliveryDueTimes,
     ) {
         product = _product;
         owner = msg.sender;

@@ -1,7 +1,6 @@
 #5. Intermediate and final receipt records
-receipt_intermediate order 
-receipt_final order
-break
+#Please manually record order progress using the receipt_intermediate and receipt_final commands.
+i
 
 #Please manually examine order details using the order_details command.
 i

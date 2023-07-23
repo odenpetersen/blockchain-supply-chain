@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+from chain import deploy,transact
 
 #Check whether the payments have been made
 class Bank:
@@ -8,10 +8,11 @@ class Bank:
         self.balances = dict()
         self.passwords = dict()
 
-    def add_oracle(self):
+    def add_oracle(self, account):
         #Launch an oracle contract instance
-        raise Exception("unimplemented.")
+        address = deploy('Oracle', account)
         self.oracles.append(address)
+        return address
 
     def create_account(self,username,password):
         self.balances[username] = 0
@@ -25,12 +26,12 @@ class Bank:
         if amount > 0 and username in self.balances and self.balances[username] >= amount and username in self.passwords and self.passwords[username] == password:
             self.balances[user] -= amount
 
-    def transfer(self,username,password,recipient,amount,oracle,order_id):
+    def transfer(self,username,password,recipient,amount,oracle,order_address,chain_account):
         if amount > 0 and username in self.balances and self.balances[username] >= amount and username in self.passwords and self.passwords[username] == password and recipient in self.balances:
-            if order_id is not None:
+            if order_address is not None:
                 if oracle not in self.oracles:
                     raise Exception("Unknown oracle.")
                 #Publish oracle confirmation
-                pass
+                transact('Oracle', oracle, chain_account, 'hasPaid', order_address)
             self.balances[username] -= amount
             self.balances[recipient] += amount

@@ -1,6 +1,12 @@
 #3. Submit order
+add_oracle
+#Please manually submit an order using the command "order newyorkconstruction chinasteel logisticsaustralia hbeamsteel200 hongkong newyork [oracle_address]"
+i
 order newyorkconstruction chinasteel logisticsaustralia hbeamsteel200 hongkong newyork
 break
 
 #Please manually examine order details using the order_details command.
+i
+
+#Please manually verify the order with "verify_seller [seller] [order_address]" and "verify_shipper [shipper] [order_address]".
 i

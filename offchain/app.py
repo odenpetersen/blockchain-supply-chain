@@ -2,12 +2,10 @@
 import routing
 import json
 from web3 import Web3, HTTPProvider
-from termcolor import colored
-comment = lambda x : print(colored(x,'yellow'))
-result = lambda x : print(colored(x,'green'))
-error = lambda x : print(colored(x,'red'))
+from printing import comment,result,error
 
 from oracle import Bank
+from chain import deploy,transact,call
 
 #0. Set up accounts
 #alias 
@@ -47,6 +45,7 @@ def run_command(command):
             commands[command](*arguments)
     except Exception as e:
         error(e)
+        
 
 def console():
     while True:
@@ -68,6 +67,11 @@ def run(filename):
 def help():
     result(list(commands.keys()))
 
+def resolve_alias(account):
+    if isinstance(account,str) and account in aliases:
+        account = aliases[account]
+    return account
+
 @com
 def frs():
     pass
@@ -87,7 +91,7 @@ def product(seller, name, sku, unit_price, quantity, description):
     decimals = 2
     unit_price_cents = int(float(unit_price) * (10**decimals))
     comment("Deploying an instance of the Product contract.")
-    address = deploy('Product', seller, sku, name, unit_price_cents, decimals, int(quantity), description)
+    address = deploy('Product', resolve_alias(seller), sku, name, unit_price_cents, decimals, int(quantity), description)
     result(f"Deployed at {address}.")
     return address
 
@@ -100,20 +104,26 @@ def intermediary(place, account):
     result(f"Added {account['address']} as designated intermediary for {place}. This is entirely off-chain.")
 
 @com
-def product_details(product):
-    comment(f"Looking up {product} address in alias dictionary.")
-    product = aliases[product]['address']
-    comment(f"Calling the getter methods of the Product contract instance at {product}.")
-    raise Exception("unimplemented")
-    #SKU, seller, name, pricePerUnit, decimals, quantity, description
-
-@com
 def order_details(order):
     if order in aliases:
         comment(f"Looking up {order} address in alias dictionary.")
         order = aliases[order]['address']
     comment(f"Calling the getter methods of the Order contract instance at {order}.")
-    raise Exception("unimplemented")
+
+    for method_name in ['getOrderStatus', 'getIsVerifiedBySeller', 'getIsVerifiedByShipper', 'getCurrentDeliveryPoint', 'getLastUpdatedAt', 'getDeliveryPoints', 'getIntermediaries', 'getDeliveryDueTimes', 'getDeliveryTimes']:
+        value = call('Order', order, resolve_alias('default'), method_name)
+        result(f"{method_name}() == {value}.")
+
+@com
+def product_details(product):
+    if product in aliases:
+        comment(f"Looking up {product} address in alias dictionary.")
+        product = aliases[product]['address']
+    comment(f"Calling the getter methods of the Product contract instance at {product}.")
+
+    for method_name in ['getSku', 'getSeller', 'getName', 'getPricePerUnit', 'getDecimals', 'getQuantity', 'getDescription']:
+        value = call('Product', product, resolve_alias('default'), method_name)
+        result(f"{method_name}() == {value}.")
 
 @com
 def route(origin, destination):
@@ -123,7 +133,7 @@ def route(origin, destination):
     return places_list
 
 @com
-def order(buyer, seller, shipper, product, origin, destination):
+def order(buyer, seller, shipper, product, origin, destination, oracle_address):
     places_list = route(origin,destination)
     for place in places_list:
         if place not in intermediaries:
@@ -137,51 +147,53 @@ def order(buyer, seller, shipper, product, origin, destination):
     comment(f"Deploying new instance of Order contract on chain.")
 
     delivery_due_times = [2147483647] * len(places_list)
-    address = deploy('Order', buyer, product['address'], seller['address'], shipper['address'], places_list, intermediaries_list, delivery_due_times)
+    address = deploy('Order', buyer, product['address'], seller['address'], shipper['address'], places_list, intermediaries_list, delivery_due_times, oracle_address)
     result(f"Deployed at {address}.")
 
-def deploy(contract_name, sender_account, *constructor_arguments):
-    network_address = 'http://127.0.0.1:8545/'
-    web3 = Web3(HTTPProvider(network_address))
+@com
+def verify_shipper(shipper, order):
+    comment(f'Verifying shipper agreement ({shipper}) to order contract {order}.')
+    transact('Order', order, resolve_alias(shipper), 'verifyOrderByShipper', True)
 
-    if isinstance(sender_account,str) and sender_account in aliases:
-        sender_account_name = sender_account
-        sender_account = aliases[sender_account]
-    else:
-        sender_account_name = sender_account['address']
+@com
+def verify_seller(seller, order):
+    comment(f'Verifying seller agreement ({seller}) to order contract {order}.')
+    transact('Order', order, resolve_alias(seller), 'verifyOrderBySeller', True)
 
-    #Get compiled contract code
-    contract_json = f'../build/contracts/{contract_name}.json'
-    with open(contract_json) as f:
-        content = json.load(f)
-    contract_obj = web3.eth.contract(abi=content['abi'], bytecode=content['bytecode'])
+bank = Bank("globalbank")
 
-    comment(f"Signing and deploying {contract_name} to {network_address} from {sender_account}.")
-    tx_construct = contract_obj.constructor(*constructor_arguments).build_transaction({'from':sender_account['address'],'nonce': web3.eth.get_transaction_count(sender_account['address'])})
-    tx_create = web3.eth.account.sign_transaction(tx_construct, sender_account['private_key'])
-    tx_hash = web3.eth.send_raw_transaction(tx_create.rawTransaction)
-    tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
+@com
+def add_oracle():
+    comment(f'Deploying oracle for {bank.name}.')
+    comment(f'Address of {bank.name} is aliases[bank.name].')
+    address = bank.add_oracle(resolve_alias(bank.name))
+    result(f'Deployed oracle at {address}.')
 
-    address = tx_receipt.contractAddress
-    result(f"Deployed to {address}.")
-
-    return address
-
-bank = Bank("Global Bank")
 @com
 def open_bank_account(username, password):
-    raise Exception("unimplemented")
+    comment(f'Opening a new bank account {username}.')
+    bank.create_account(username,password)
 
 @com
-def deposit_funds(username, amount):
-    raise Exception("unimplemented")
+def deposit(username, amount):
+    amount = float(amount)
+    comment(f'Depositing ${amount} into {username}.')
+    bank.deposit(username, amount)
 
 @com
-def withdraw_funds(username, password, amount):
-    raise Exception("unimplemented")
+def withdraw(username, password, amount):
+    amount = float(amount)
+    comment(f'Withdrawing ${amount} from {username}.')
+    bank.withdraw(username, password, amount)
 
 @com
-def transfer():
+def transfer(username, password, recipient, amount, oracle, order_id):
+    amount = float(amount)
+    comment(f'Transferring ${amount} from {username} to {recipient} for order {order_id} and recording on oracle contract at {oracle}.')
+    bank.transfer(username, password, recipient, amount, oracle, order_id, resolve_alias(bank.name))
+
+@com
+def verify_paid(oracle_address, order_id):
     raise Exception("unimplemented")
 
 @com
