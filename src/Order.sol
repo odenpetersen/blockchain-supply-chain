@@ -89,8 +89,12 @@ contract Order is IOrder {
     /// Order being paid
     function isPaid() external onlyOrderVerifiedState returns (bool) {
         // call oracle functions
-        orderStatus = OrderStatus.PAID;
-        return true;
+        if (oracle.isPaid(address(this)) == false) {
+            return false;
+        } else {
+            orderStatus = OrderStatus.PAID;
+            return true;
+        }
     }
 
     /// Deliver the order
