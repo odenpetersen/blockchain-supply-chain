@@ -8,7 +8,7 @@ import {Oracle} from "../../src/Oracle.sol";
 contract OracleTest is Test {
     Oracle oracle;
 
-    address public ANON = makeAddr("anonymous");
+    address public HACKER = makeAddr("hacker");
 
     function setUp() public {
         oracle = new Oracle();
@@ -24,7 +24,7 @@ contract OracleTest is Test {
     }
 
     function testFail_setPaid() public {
-        vm.prank(ANON);
+        vm.prank(HACKER);
         oracle.setPaid(address(this), true);
     }
 }

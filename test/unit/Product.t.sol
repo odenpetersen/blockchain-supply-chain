@@ -7,8 +7,10 @@ import {Product} from "../../src/Product.sol";
 
 contract ProductTest is Test {
     Product product;
+    address public SELLER = makeAddr("seller");
 
     function test_productAttributes() public {
+        vm.prank(SELLER);
         product = new Product(
             "12345678",
             "100 boxes of Milk",
@@ -18,6 +20,7 @@ contract ProductTest is Test {
             "100 boxes of Milk expires on 2023-08-01"
         );
         assertEq(product.getSku(), "12345678");
+        assertEq(product.getSeller(), SELLER);
         assertEq(product.getName(), "100 boxes of Milk");
         assertEq(product.getPricePerUnit(), 100);
         assertEq(product.getDecimals(), 2);
