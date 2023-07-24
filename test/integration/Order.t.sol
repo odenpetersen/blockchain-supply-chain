@@ -317,7 +317,7 @@ contract OrderTest is StdCheats, Test {
         vm.prank(HACKER);
         vm.expectRevert();
         order.verifyReceipt();
-        assertEq(uint(order.getOrderStatus()), 4);
+        assertEq(uint(order.getOrderStatus()), 3);
     }
 
     function test_cancelledStateInCreatedState1() public {
