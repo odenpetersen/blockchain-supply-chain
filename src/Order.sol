@@ -15,6 +15,7 @@ import "./Oracle.sol";
 /// 5. Buyer verifies the receipt
 /// Note that Buyer, Seller, Shipper can cancels the order at any time
 contract Order is IOrder {
+    /** STATE variables */
     address product; // address of the product that is being purchased
     address owner; // buyer of the order
     address seller; // seller of the product
@@ -33,8 +34,7 @@ contract Order is IOrder {
     OrderStatus orderStatus; // status of the order
     Oracle oracle; // oracle of the order which verifies whether the order is being paid
 
-    // modifiers
-
+    /** MODIFIERS */
     /// @notice modifier to check if the caller is the owner aka buyer
     modifier onlyOwner() {
         if (msg.sender != owner) {
@@ -91,6 +91,7 @@ contract Order is IOrder {
         _;
     }
 
+    /** CREATED STATE function */
     /// @notice Creating an order
     /// @param _product the address of the product that is being purchased
     /// @param _seller the address of the seller of the product
@@ -128,6 +129,7 @@ contract Order is IOrder {
         orderStatus = OrderStatus.CREATED;
     }
 
+    /** VERIFIED STATE functions */
     /// @notice Verify the order by the seller (only can be done in created state)
     /// @param inStock whether the product is in stock
     function verifyOrderBySeller(
@@ -162,6 +164,7 @@ contract Order is IOrder {
         }
     }
 
+    /** PAID STATE function */
     /// @notice Check if the order is paid by the buyer (only can be done in verified state)
     /// @dev call the oracle contract to check if the order is paid
     /// @return whether the order is paid
@@ -175,6 +178,7 @@ contract Order is IOrder {
         }
     }
 
+    /** DELIVERING STATE function */
     /// @notice Update the shipment by the delivery point centres (only can be done in paid state)
     ///         Only can be called the delivery point centres' addresses
     /// @param timestamp the timestamp of the delivery
@@ -201,15 +205,18 @@ contract Order is IOrder {
         }
 
         emit ShipmentUpdated(timestamp, destinations[currentDeliveryPoint]);
+        deliveryTimes[msg.sender] = timestamp; // update the delivery time 
         ++currentDeliveryPoint;
         lastUpdatedAt = timestamp;
     }
 
+    /** RECEIVED STATE function */
     /// @notice Buyer acknowledges that they have received the order and verify the receipt (only can be done in delivered state)
     function verifyReceipt() external onlyOwner onlyOrderDeliveringState {
         orderStatus = OrderStatus.RECEIVED;
     }
 
+    /** CANCELLED STATE function */
     /// @notice Buyer/Seller/Shipper could make an emergency cancellation of the order at any time
     function cancelOrder() external {
         if (
@@ -221,6 +228,7 @@ contract Order is IOrder {
         }
     }
 
+    /** GETTER functions */
     /// @notice Get the order status of the order
     /// @return the order status
     function getOrderStatus() external view returns (OrderStatus) {
