@@ -2,8 +2,10 @@
 
 pragma solidity 0.8.19;
 
-// interface of the Order contract
+/// @title The interface of the Order contract
+/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
 interface IOrder {
+    /// @notice order status of an order
     enum OrderStatus {
         CREATED, // created by the buyer
         VERIFIED, // verified by both seller (in stocks) and shipper (right destinations)
@@ -20,55 +22,55 @@ interface IOrder {
     error OrderNotDelivered();
     error OrderAlreadyDelivered();
     error IncorrectOrderStatusState();
-
     error DestinationsLengthAndIntermediariesLengthNotEqual();
     error DestinationsLengthAndDeliveryDueTimesLengthNotEqual();
     error UnauthorizedAccess();
     error IncorrectTimestamp();
 
     // Events
+    /// @notice event emitted when the order is updated by the delivery point centres
     event ShipmentUpdated(uint timestamp, string place);
 
     // Functions
-
-    // Verify the order
+    /// @notice Verify the order by the seller
     function verifyOrderBySeller(bool) external;
 
+    /// @notice Verify the order by the shipper
     function verifyOrderByShipper(bool) external;
 
-    // check if the order has been paid
+    /// @notice check if the order has been paid
     function isPaid() external returns (bool);
 
-    // update shipment
+    /// @notice update shipment by the delivery point centres
     function updateShipment(uint) external;
 
-    // The party receiving the product at a location should call this function before taking physical control of goods.
+    /// @notice buyer acknowledges that they have received the order and verify the receipt
     function verifyReceipt() external;
 
-    // status is the where the order is at and when
+    /// @notice get the order status
     function getOrderStatus() external returns (OrderStatus);
 
-    // get isVerifiedBySeller
+    /// @notice get status whether the order is verified by the seller
     function getIsVerifiedBySeller() external returns (bool);
 
-    // get isVerifiedByShipper
+    /// @notice get status whether the order is verified by the shipper
     function getIsVerifiedByShipper() external returns (bool);
 
-    // get the current delivery point
+    /// @notice get the current delivery point
     function getCurrentDeliveryPoint() external returns (string memory);
 
-    // get the last updated time
+    /// @notice get the last updated time
     function getLastUpdatedAt() external returns (uint);
 
-    // get the delivery points
+    /// @notice get the delivery points
     function getDeliveryPoints() external returns (string[] memory);
 
-    // get the intermediaries involved
+    /// @notice get the intermediaries involved
     function getIntermediaries() external returns (address[] memory);
 
-    // get the delivery due times
+    /// @notice get the delivery due times
     function getDeliveryDueTimes() external returns (uint[] memory);
 
-    // get the delivery times
+    /// @notice get the delivery times
     function getDeliveryTimes() external returns (uint[] memory);
 }
