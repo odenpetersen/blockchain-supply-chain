@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.19;
 
 /// @title
 /// @author
 
-contract Oracle {
+import "./interfaces/IOracle.sol";
+
+contract Oracle is IOracle {
     address manager;
     mapping(address => bool) contractsPaid;
 
@@ -13,8 +15,11 @@ contract Oracle {
         manager = msg.sender;
     }
 
-    function hasPaid(address contractAddress) external onlyManager {
-        contractsPaid[contractAddress] = true;
+    function setPaid(
+        address contractAddress,
+        bool _isPaid
+    ) external onlyManager {
+        contractsPaid[contractAddress] = _isPaid;
     }
 
     function isPaid(address contractAddress) external view returns (bool) {

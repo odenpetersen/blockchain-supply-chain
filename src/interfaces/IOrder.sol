@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.19;
 
 // interface of the Order contract
 interface IOrder {
@@ -8,7 +8,7 @@ interface IOrder {
         CREATED, // created by the buyer
         VERIFIED, // verified by both seller (in stocks) and shipper (right destinations)
         PAID, // order has been paid
-        DELIVERED, // order has been delivered
+        DELIVERING, // order is delivering
         RECEIVED, // order has been received by the buyer
         CANCELLED // order has been cancelled
     }
@@ -24,9 +24,10 @@ interface IOrder {
     error DestinationsLengthAndIntermediariesLengthNotEqual();
     error DestinationsLengthAndDeliveryDueTimesLengthNotEqual();
     error UnauthorizedAccess();
+    error IncorrectTimestamp();
 
     // Events
-    event UpdatedShipment(string place, uint timestamp);
+    event ShipmentUpdated(uint timestamp, string place);
 
     // Functions
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.19;
 
 /// @title
 /// @author
@@ -32,6 +32,7 @@ contract Order is IOrder {
         address _product,
         address _seller,
         address _shipper,
+        address _oracle,
         string[] memory _destinations,
         address[] memory _intermediaries,
         uint[] memory _deliveryDueTimes
@@ -40,18 +41,19 @@ contract Order is IOrder {
         owner = msg.sender;
         seller = _seller;
         shipper = _shipper;
+        oracle = Oracle(_oracle);
 
         if (_destinations.length != _intermediaries.length) {
             revert DestinationsLengthAndIntermediariesLengthNotEqual();
         }
 
-        destinations = _destinations;
-        intermediaries = _intermediaries;
-
         if (_destinations.length != _deliveryDueTimes.length) {
             revert DestinationsLengthAndDeliveryDueTimesLengthNotEqual();
         }
 
+        destinations = _destinations;
+        intermediaries = _intermediaries;
+        deliveryDueTimes = _deliveryDueTimes;
         orderStatus = OrderStatus.CREATED;
     }
 
@@ -104,8 +106,12 @@ contract Order is IOrder {
             if (intermediaries[0] != msg.sender) {
                 revert UnauthorizedAccess();
             }
-            orderStatus = OrderStatus.DELIVERED;
-        } else if (orderStatus == OrderStatus.DELIVERED) {
+            orderStatus = OrderStatus.DELIVERING;
+        } else if (orderStatus == OrderStatus.DELIVERING) {
+            if (timestamp <= lastUpdatedAt) {
+                revert IncorrectTimestamp();
+            }
+
             if (currentDeliveryPoint >= destinations.length) {
                 revert OrderAlreadyDelivered();
             }
@@ -116,9 +122,9 @@ contract Order is IOrder {
             revert IncorrectOrderStatusState();
         }
 
+        emit ShipmentUpdated(timestamp, destinations[currentDeliveryPoint]);
         ++currentDeliveryPoint;
         lastUpdatedAt = timestamp;
-        emit UpdatedShipment(destinations[currentDeliveryPoint], timestamp);
     }
 
     /// Verify the receipt
@@ -152,7 +158,11 @@ contract Order is IOrder {
 
     // Get the current delivery point
     function getCurrentDeliveryPoint() external view returns (string memory) {
-        return destinations[currentDeliveryPoint];
+        return (
+            currentDeliveryPoint == 0
+                ? destinations[currentDeliveryPoint]
+                : destinations[currentDeliveryPoint - 1]
+        );
     }
 
     // Get the last updated time
@@ -229,7 +239,7 @@ contract Order is IOrder {
     }
 
     modifier onlyOrderDeliveredState() {
-        if (orderStatus != OrderStatus.DELIVERED) {
+        if (orderStatus != OrderStatus.DELIVERING) {
             revert OrderNotDelivered();
         }
         _;
