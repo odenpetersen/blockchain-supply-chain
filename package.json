@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deployProduct": "forge script script/DeployProduct.s.sol --fork-url $SEPOLIA_RPC_URL --private-key $SELLER_PRIVATE_KEY --broadcast --via-ir",
+    "deployOracle": "forge script script/DeployOracle.s.sol --fork-url $SEPOLIA_RPC_URL --private-key $ORACLE_PRIVATE_KEY --broadcast --via-ir",
+    "deployOrder": "forge script script/DeployOrder.s.sol --fork-url $SEPOLIA_RPC_URL --broadcast --via-ir",
+    "interactOrder": "forge script script/InteractOrder.s.sol --fork-url $SEPOLIA_RPC_URL --broadcast --via-ir"
   },
   "repository": {
     "type": "git",
