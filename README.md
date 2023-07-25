@@ -1,4 +1,5 @@
-# blockchain-supply-chain
+# Blockchain Supply Chain Management
+Smart contracts and a CLI to manage shipping of goods internationally, providing proof of payment, proof of delivery, and order tracking services.
 
 ## Usage
 Contracts are in src/
@@ -7,7 +8,10 @@ Offchain components are in offchain/
 
 To use, run the commands "truffle compile" and "truffle develop", then in a separate terminal navigate to offchain/ and run app.py. This will provide a command line interface for using the various features.
 
-### Details
+## Demonstration
+[YouTube](https://www.youtube.com/watch?v=PrK1-6fld6M)
+
+## Deployed contracts
 BUYER_ADDRESS=0x0f4FF0d23D1E116e41b151CA256b6a91ea1dA634
 SELLER_ADDRESS=0x77d6174c11E9081c2Fe1bd2ba05d00E80A801749
 ORACLE_ADDRESS=0xAafF9C66F4Bb7709F9325892336623B9395a177e
@@ -24,6 +28,3 @@ ORDER_ADDRESS=0x2040c43923afe3e4252c9b82a1d2e9f1ca438897
 
 
 ![Alt text](pics/image-1.png)
-
-### Demonstration
-[YouTube](https://www.youtube.com/watch?v=PrK1-6fld6M)
