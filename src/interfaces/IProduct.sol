@@ -3,7 +3,7 @@
 pragma solidity 0.8.19;
 
 /// @title A product contract where seller could list their items in the marketplace
-/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
+/// @author Amos Tan, Oden Petersen (COMP6452 2023T2 Group 22)
 interface IProduct {
     /// @notice Get the SKU of the product
     function getSku() external view returns (string memory);

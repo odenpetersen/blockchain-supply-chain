@@ -5,7 +5,7 @@ pragma solidity 0.8.19;
 import "./interfaces/IOracle.sol";
 
 /// @title An oracle contract where the oracle manager could update the paid status of the order
-/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
+/// @author Amos Tan, Oden Petersen (COMP6452 2023T2 Group 22)
 /// @notice This contract is used to update the paid status of the order
 contract Oracle is IOracle {
     address manager; // the manager of the oracle / owner of this contract
