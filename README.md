@@ -1,5 +1,8 @@
 # blockchain-supply-chain
 
+### Demonstration
+[YouTube](https://www.youtube.com/watch?v=PrK1-6fld6M)
+
 ### Details
 BUYER_ADDRESS=0x0f4FF0d23D1E116e41b151CA256b6a91ea1dA634
 SELLER_ADDRESS=0x77d6174c11E9081c2Fe1bd2ba05d00E80A801749
@@ -17,6 +20,3 @@ ORDER_ADDRESS=0x2040c43923afe3e4252c9b82a1d2e9f1ca438897
 
 
 ![Alt text](pics/image-1.png)
-
-### Demonstration
-[YouTube](https://www.youtube.com/watch?v=PrK1-6fld6M)
