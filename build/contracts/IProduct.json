@@ -93,7 +93,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getDecimals\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDescription\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPricePerUnit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSeller\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSku\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"@author\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProduct.sol\":\"IProduct\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProduct.sol\":{\"keccak256\":\"0x219c645d7e76b88b8b32fdfe6b1c0936d83f71966bbb04c0471a4cd7b5f2258b\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://08ca875394435c38f09b865e549c37574899f8df65452cc6c6ac0043c41cd293\",\"dweb:/ipfs/QmTXHoRzXFToab6nFeJeTHL34CMRjL2nAXfe3T6RshbCGB\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getDecimals\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDescription\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPricePerUnit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSeller\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSku\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)\",\"kind\":\"dev\",\"methods\":{},\"title\":\"A product contract where seller could list their items in the marketplace\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getDecimals()\":{\"notice\":\"Get the decimals of the price per unit of the product for accuracy\"},\"getDescription()\":{\"notice\":\"Get the description of the product\"},\"getName()\":{\"notice\":\"Get the name of the product\"},\"getPricePerUnit()\":{\"notice\":\"Get the price per unit of the product\"},\"getQuantity()\":{\"notice\":\"Get the quantity of the product to be sold\"},\"getSeller()\":{\"notice\":\"Get the address of the seller of the product\"},\"getSku()\":{\"notice\":\"Get the SKU of the product\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/interfaces/IProduct.sol\":\"IProduct\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/interfaces/IProduct.sol\":{\"keccak256\":\"0xaf0bf3eda59e4dbb8c0f4dddf461d3adeae51eb7e43de5566e41422dbafd4d01\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://32b023ba20c7c5c2259ab71d52e1529b01e6d371017bf27cbe1990e6d9e39ffc\",\"dweb:/ipfs/QmfJvuCbRTpH8uqyy2muvpm9p7iSLT8sGkKK8CVsBmPXoh\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -101,29 +101,28 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: UNLICENSED\n\npragma solidity ^0.8.0;\n\n/// @title\n/// @author\n\ninterface IProduct {\n    function getSku() external view returns (string memory);\n\n    function getSeller() external view returns (address);\n\n    function getName() external view returns (string memory);\n\n    function getPricePerUnit() external view returns (uint);\n\n    function getDecimals() external view returns (uint);\n\n    function getQuantity() external view returns (uint);\n\n    function getDescription() external view returns (string memory);\n}\n",
-  "sourcePath": "/Users/odenpetersen/Documents/Programming/blockchain-supply-chain/contracts/interfaces/IProduct.sol",
+  "source": "// SPDX-License-Identifier: UNLICENSED\n\npragma solidity 0.8.19;\n\n/// @title A product contract where seller could list their items in the marketplace\n/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)\ninterface IProduct {\n    /// @notice Get the SKU of the product\n    function getSku() external view returns (string memory);\n\n    /// @notice Get the address of the seller of the product\n    function getSeller() external view returns (address);\n\n    /// @notice Get the name of the product\n    function getName() external view returns (string memory);\n\n    /// @notice Get the price per unit of the product\n    function getPricePerUnit() external view returns (uint);\n\n    /// @notice Get the decimals of the price per unit of the product for accuracy\n    function getDecimals() external view returns (uint);\n\n    /// @notice Get the quantity of the product to be sold\n    function getQuantity() external view returns (uint);\n\n    /// @notice Get the description of the product\n    function getDescription() external view returns (string memory);\n}\n",
+  "sourcePath": "/Users/odenpetersen/Documents/Programming/blockchain-supply-chain/src/interfaces/IProduct.sol",
   "ast": {
-    "absolutePath": "project:/contracts/interfaces/IProduct.sol",
+    "absolutePath": "project:/src/interfaces/IProduct.sol",
     "exportedSymbols": {
       "IProduct": [
-        852
+        984
       ]
     },
-    "id": 853,
+    "id": 985,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 815,
+        "id": 940,
         "literals": [
           "solidity",
-          "^",
           "0.8",
-          ".0"
+          ".19"
         ],
         "nodeType": "PragmaDirective",
-        "src": "40:23:4"
+        "src": "40:23:5"
       },
       {
         "abstract": false,
@@ -132,48 +131,54 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 816,
+          "id": 941,
           "nodeType": "StructuredDocumentation",
-          "src": "65:23:4",
-          "text": "@title\n @author"
+          "src": "65:148:5",
+          "text": "@title A product contract where seller could list their items in the marketplace\n @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)"
         },
         "fullyImplemented": false,
-        "id": 852,
+        "id": 984,
         "linearizedBaseContracts": [
-          852
+          984
         ],
         "name": "IProduct",
-        "nameLocation": "99:8:4",
+        "nameLocation": "223:8:5",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "documentation": {
+              "id": 942,
+              "nodeType": "StructuredDocumentation",
+              "src": "238:38:5",
+              "text": "@notice Get the SKU of the product"
+            },
             "functionSelector": "686690e6",
-            "id": 821,
+            "id": 947,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getSku",
-            "nameLocation": "123:6:4",
+            "nameLocation": "290:6:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 817,
+              "id": 943,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "129:2:4"
+              "src": "296:2:5"
             },
             "returnParameters": {
-              "id": 820,
+              "id": 946,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 819,
+                  "id": 945,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 821,
-                  "src": "155:13:4",
+                  "scope": 947,
+                  "src": "322:13:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -181,10 +186,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 818,
+                    "id": 944,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "155:6:4",
+                    "src": "322:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -193,42 +198,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "154:15:4"
+              "src": "321:15:5"
             },
-            "scope": 852,
-            "src": "114:56:4",
+            "scope": 984,
+            "src": "281:56:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 948,
+              "nodeType": "StructuredDocumentation",
+              "src": "343:56:5",
+              "text": "@notice Get the address of the seller of the product"
+            },
             "functionSelector": "dbd0e1b6",
-            "id": 826,
+            "id": 953,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getSeller",
-            "nameLocation": "185:9:4",
+            "nameLocation": "413:9:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 822,
+              "id": 949,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "194:2:4"
+              "src": "422:2:5"
             },
             "returnParameters": {
-              "id": 825,
+              "id": 952,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 824,
+                  "id": 951,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 826,
-                  "src": "220:7:4",
+                  "scope": 953,
+                  "src": "448:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -236,10 +247,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 823,
+                    "id": 950,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "220:7:4",
+                    "src": "448:7:5",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -249,42 +260,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "219:9:4"
+              "src": "447:9:5"
             },
-            "scope": 852,
-            "src": "176:53:4",
+            "scope": 984,
+            "src": "404:53:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 954,
+              "nodeType": "StructuredDocumentation",
+              "src": "463:39:5",
+              "text": "@notice Get the name of the product"
+            },
             "functionSelector": "17d7de7c",
-            "id": 831,
+            "id": 959,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getName",
-            "nameLocation": "244:7:4",
+            "nameLocation": "516:7:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 827,
+              "id": 955,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "251:2:4"
+              "src": "523:2:5"
             },
             "returnParameters": {
-              "id": 830,
+              "id": 958,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 829,
+                  "id": 957,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 831,
-                  "src": "277:13:4",
+                  "scope": 959,
+                  "src": "549:13:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -292,10 +309,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 828,
+                    "id": 956,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "277:6:4",
+                    "src": "549:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -304,42 +321,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "276:15:4"
+              "src": "548:15:5"
             },
-            "scope": 852,
-            "src": "235:57:4",
+            "scope": 984,
+            "src": "507:57:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 960,
+              "nodeType": "StructuredDocumentation",
+              "src": "570:49:5",
+              "text": "@notice Get the price per unit of the product"
+            },
             "functionSelector": "a7cc53f5",
-            "id": 836,
+            "id": 965,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPricePerUnit",
-            "nameLocation": "307:15:4",
+            "nameLocation": "633:15:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 832,
+              "id": 961,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "322:2:4"
+              "src": "648:2:5"
             },
             "returnParameters": {
-              "id": 835,
+              "id": 964,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 834,
+                  "id": 963,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 836,
-                  "src": "348:4:4",
+                  "scope": 965,
+                  "src": "674:4:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -347,10 +370,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 833,
+                    "id": 962,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "348:4:4",
+                    "src": "674:4:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -359,42 +382,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "347:6:4"
+              "src": "673:6:5"
             },
-            "scope": 852,
-            "src": "298:56:4",
+            "scope": 984,
+            "src": "624:56:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 966,
+              "nodeType": "StructuredDocumentation",
+              "src": "686:78:5",
+              "text": "@notice Get the decimals of the price per unit of the product for accuracy"
+            },
             "functionSelector": "f0141d84",
-            "id": 841,
+            "id": 971,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDecimals",
-            "nameLocation": "369:11:4",
+            "nameLocation": "778:11:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 837,
+              "id": 967,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "380:2:4"
+              "src": "789:2:5"
             },
             "returnParameters": {
-              "id": 840,
+              "id": 970,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 839,
+                  "id": 969,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 841,
-                  "src": "406:4:4",
+                  "scope": 971,
+                  "src": "815:4:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -402,10 +431,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 838,
+                    "id": 968,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "406:4:4",
+                    "src": "815:4:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -414,42 +443,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "405:6:4"
+              "src": "814:6:5"
             },
-            "scope": 852,
-            "src": "360:52:4",
+            "scope": 984,
+            "src": "769:52:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 972,
+              "nodeType": "StructuredDocumentation",
+              "src": "827:54:5",
+              "text": "@notice Get the quantity of the product to be sold"
+            },
             "functionSelector": "0115949c",
-            "id": 846,
+            "id": 977,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getQuantity",
-            "nameLocation": "427:11:4",
+            "nameLocation": "895:11:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 842,
+              "id": 973,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "438:2:4"
+              "src": "906:2:5"
             },
             "returnParameters": {
-              "id": 845,
+              "id": 976,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 844,
+                  "id": 975,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 846,
-                  "src": "464:4:4",
+                  "scope": 977,
+                  "src": "932:4:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -457,10 +492,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 843,
+                    "id": 974,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "464:4:4",
+                    "src": "932:4:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -469,42 +504,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "463:6:4"
+              "src": "931:6:5"
             },
-            "scope": 852,
-            "src": "418:52:4",
+            "scope": 984,
+            "src": "886:52:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 978,
+              "nodeType": "StructuredDocumentation",
+              "src": "944:46:5",
+              "text": "@notice Get the description of the product"
+            },
             "functionSelector": "1a092541",
-            "id": 851,
+            "id": 983,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDescription",
-            "nameLocation": "485:14:4",
+            "nameLocation": "1004:14:5",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 847,
+              "id": 979,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "499:2:4"
+              "src": "1018:2:5"
             },
             "returnParameters": {
-              "id": 850,
+              "id": 982,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 849,
+                  "id": 981,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 851,
-                  "src": "525:13:4",
+                  "scope": 983,
+                  "src": "1044:13:5",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -512,10 +553,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 848,
+                    "id": 980,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "525:6:4",
+                    "src": "1044:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -524,39 +565,61 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "524:15:4"
+              "src": "1043:15:5"
             },
-            "scope": 852,
-            "src": "476:64:4",
+            "scope": 984,
+            "src": "995:64:5",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 853,
-        "src": "89:453:4",
-        "usedErrors": [],
-        "usedEvents": []
+        "scope": 985,
+        "src": "213:848:5",
+        "usedErrors": []
       }
     ],
-    "src": "40:503:4"
+    "src": "40:1022:5"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+    "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-07-22T14:53:06.791Z",
+  "updatedAt": "2023-07-25T00:33:59.670Z",
   "devdoc": {
+    "author": "Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)",
     "kind": "dev",
     "methods": {},
-    "title": "@author",
+    "title": "A product contract where seller could list their items in the marketplace",
     "version": 1
   },
   "userdoc": {
     "kind": "user",
-    "methods": {},
+    "methods": {
+      "getDecimals()": {
+        "notice": "Get the decimals of the price per unit of the product for accuracy"
+      },
+      "getDescription()": {
+        "notice": "Get the description of the product"
+      },
+      "getName()": {
+        "notice": "Get the name of the product"
+      },
+      "getPricePerUnit()": {
+        "notice": "Get the price per unit of the product"
+      },
+      "getQuantity()": {
+        "notice": "Get the quantity of the product to be sold"
+      },
+      "getSeller()": {
+        "notice": "Get the address of the seller of the product"
+      },
+      "getSku()": {
+        "notice": "Get the SKU of the product"
+      }
+    },
     "version": 1
   }
 }

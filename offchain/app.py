@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import routing
 import json
+import time
 from web3 import Web3, HTTPProvider
 from printing import comment,result,error
 
@@ -97,11 +98,14 @@ def product(seller, name, sku, unit_price, quantity, description):
 
 intermediaries = dict()
 @com
-def intermediary(place, account):
-    comment(f"Looking up {account} address in alias dictionary.")
-    account = aliases[account]
-    intermediaries[place] = account['address']
-    result(f"Added {account['address']} as designated intermediary for {place}. This is entirely off-chain.")
+def intermediary(place, account=None):
+    if account is None:
+        result(f"Intermediary for {place} has alias {[k for k in aliases if aliases[k]['address'] == intermediaries[place]]}")
+    else:
+        comment(f"Looking up {account} address in alias dictionary.")
+        account = aliases[account]
+        intermediaries[place] = account['address']
+        result(f"Added {account['address']} as designated intermediary for {place}. This is entirely off-chain.")
 
 @com
 def order_details(order):
@@ -147,7 +151,7 @@ def order(buyer, seller, shipper, product, origin, destination, oracle_address):
     comment(f"Deploying new instance of Order contract on chain.")
 
     delivery_due_times = [2147483647] * len(places_list)
-    address = deploy('Order', buyer, product['address'], seller['address'], shipper['address'], places_list, intermediaries_list, delivery_due_times, oracle_address)
+    address = deploy('Order', buyer, product['address'], seller['address'], shipper['address'], oracle_address, places_list, intermediaries_list, delivery_due_times)
     result(f"Deployed at {address}.")
 
 @com
@@ -193,16 +197,17 @@ def transfer(username, password, recipient, amount, oracle, order_id):
     bank.transfer(username, password, recipient, amount, oracle, order_id, resolve_alias(bank.name))
 
 @com
-def verify_paid(oracle_address, order_id):
-    raise Exception("unimplemented")
+def verify_paid(order_address):
+    transact('Order', order_address, resolve_alias('default'), 'isPaid')
+    result(f'Updated payment status of order.')
 
 @com
-def receipt_intermediate():
-    raise Exception("unimplemented")
+def receipt_intermediate(order_address, intermediary_id):
+    transact('Order', order_address, resolve_alias(intermediary_id), 'updateShipment', int(time.time()))
 
 @com
-def receipt_final():
-    raise Exception("unimplemented")
+def receipt_final(order_address, buyer_id):
+    transact('Order', order_address, resolve_alias(buyer_id), 'verifyReceipt')
 
 if __name__ == "__main__":
     console()

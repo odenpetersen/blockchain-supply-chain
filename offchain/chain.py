@@ -32,7 +32,6 @@ def transact(contract_name, contract_address, sender_account, method_name, *argu
         content = json.load(f)
     contract_obj = web3.eth.contract(address=contract_address, abi=content['abi'])
 
-    comment(f"Building and signing transaction with {method_name} sent from {sender_account['address']}.")
     method_obj = getattr(contract_obj.functions,method_name)
     tx = method_obj(*arguments).build_transaction({'from' : sender_account['address'], 'nonce': web3.eth.get_transaction_count(sender_account['address'])})
     tx_create = web3.eth.account.sign_transaction(tx, sender_account['private_key'])

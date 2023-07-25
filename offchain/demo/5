@@ -1,6 +1,8 @@
 #5. Intermediate and final receipt records
 #Please manually record order progress using the receipt_intermediate and receipt_final commands.
-i
-
-#Please manually examine order details using the order_details command.
+intermediary hongkong
+intermediary dubai
+intermediary johannesburg
+intermediary newyork
+#Please update progress with "receipt_intermediate [order_id] [intermediary]" and "receipt_final [order_id] newyorkconstruction"
 i

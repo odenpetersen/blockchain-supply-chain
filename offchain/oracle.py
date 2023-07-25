@@ -32,6 +32,6 @@ class Bank:
                 if oracle not in self.oracles:
                     raise Exception("Unknown oracle.")
                 #Publish oracle confirmation
-                transact('Oracle', oracle, chain_account, 'hasPaid', order_address)
+                transact('Oracle', oracle, chain_account, 'setPaid', order_address, True)
             self.balances[username] -= amount
             self.balances[recipient] += amount
