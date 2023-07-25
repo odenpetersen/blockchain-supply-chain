@@ -3,7 +3,7 @@
 pragma solidity 0.8.19;
 
 /// @title The interface of the Order contract
-/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
+/// @author Amos Tan, Oden Petersen (COMP6452 2023T2 Group 22)
 interface IOrder {
     /// @notice order status of an order
     enum OrderStatus {

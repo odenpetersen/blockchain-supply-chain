@@ -6,7 +6,7 @@ import "./interfaces/IOrder.sol";
 import "./Oracle.sol";
 
 /// @title The order contract
-/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
+/// @author Amos Tan, Oden Petersen (COMP6452 2023T2 Group 22)
 /// @notice Here is the flow to use this contract:
 /// 1. Buyer creates an order
 /// 2. Seller and Shipper verifies the order (order does not matter)
@@ -205,7 +205,7 @@ contract Order is IOrder {
         }
 
         emit ShipmentUpdated(timestamp, destinations[currentDeliveryPoint]);
-        deliveryTimes[msg.sender] = timestamp; // update the delivery time 
+        deliveryTimes[msg.sender] = timestamp; // update the delivery time
         ++currentDeliveryPoint;
         lastUpdatedAt = timestamp;
     }
@@ -266,7 +266,7 @@ contract Order is IOrder {
     }
 
     /// @notice Get the delivery points
-    /// @return the delivery points 
+    /// @return the delivery points
     function getDeliveryPoints() external view returns (string[] memory) {
         return destinations;
     }

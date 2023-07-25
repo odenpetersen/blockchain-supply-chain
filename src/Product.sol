@@ -5,7 +5,7 @@ pragma solidity 0.8.19;
 import "./interfaces/IProduct.sol";
 
 /// @title A product contract where seller could list their items in the marketplace
-/// @author Amos Tan, Oden Peterson (COMP6452 2023T2 Group 22)
+/// @author Amos Tan, Oden Petersen (COMP6452 2023T2 Group 22)
 /// @notice This contract is deployed by the seller and is used to list their products in the marketplace
 contract Product is IProduct {
     string sku; // stock keeping unit
